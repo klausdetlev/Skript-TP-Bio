@@ -1,0 +1,85 @@
+\subsection{Random Walks on a lattice}
+We consider a random walker on a 1-D lattice. The walker moves to the right (left) with probability $p$ ($q=1-p$). The probability distribution $P(x)$ evolves according to the recursion relation
+\begin{equation*}
+	P_N(x)=pP_{N-1}(x-1)+qP_{N-1}(x+1)
+\end{equation*}
+The solution can be obtained from the following consideration:\\
+The probability to move $r$ steps to the right is given by
+\begin{equation*}
+	\Pi(r)=\underset{\underset{\text{\# possible trajectories}}{\uparrow}}{\underbrace{\begin{pmatrix} N \\ r \end{pmatrix}}}\cdot\underset{\underset{\text{probability of a given trajectory}}{\uparrow}}{\underbrace{p^rq^{N-r}}}
+\end{equation*}
+If we now use Stirling's approximation, i.e. $N!\sim \sqrt{2\pi N}\left(\frac{N}{e}\right)^N$, we get:
+\begin{align*}
+	\Pi(r)&\sim\frac{1}{\sqrt{2\pi N}}\left(\frac{r}{N}\right)^{-r-\frac{1}{2}}\left(\frac{N-r}{N}\right)^{-N+r-\frac{1}{2}}p^rq^{N-r}\\
+	&=\frac{1}{\sqrt{2\pi N}}\exp\left(-\left(r+\frac{1}{2}\right)\ln\left(\frac{r}{N}\right)-\left(N-r+\frac{1}{2}\right)\ln\left(\frac{N-r}{N}\right)+r\ln(p)+(N-r)\ln(q)\right)
+\end{align*}
+Now, assuming that $1<<y<<Np$, where $y=r-Np$, we get
+\begin{equation*}
+	\Pi(r)\approx\frac{1}{\sqrt{2\pi Npq}}\exp\left(-2\frac{(r-Np)^2}{Npq}\right)
+\end{equation*}
+Considering that the displacement $x$ is given by $x=2r-N$ we have
+\begin{equation*}
+	P(x)\approx\frac{1}{\sqrt{2\pi Npq}}\exp\left(-\frac{(x-N(p-q))^2}{2Npq}\right)
+\end{equation*}
+This is a gaussian with mean $\mu=N(p-q)$ \& $\sigma=\sqrt{Npq}$\\
+Discrete time random walks are often not appropriate in describing nature since time is a continuous variable.\\
+In the continuous time version of the random walk, the time evolution is given by:
+\begin{equation*}
+	\frac{\partial P_n}{\partial t}=\underset{\text{gain}}{P_{n+1}}-\underset{\text{loss}}{2P_n}+\underset{\text{gain}}{P_{n-1}}\qquad (\ast)
+\end{equation*}
+where we have considered symmetric hopping \underline{\smash{rates}} (\underline{not} probabilities!) $s=1$ to the left and to the right. Eq. $(\ast)$ is called Master-equation.\\
+In order to determine the solution of the problem, we consider a slightly more general master-equation:
+\begin{equation*}
+	\frac{\partial P_n}{\partial t}=\gamma \left(P_{n-1}+P_{n+1}\right)-2P_n
+\end{equation*}
+Initial condition: $P_n(t=0)=\delta_{n,0}$. We now introduce the discrete Fourier-transform:
+\begin{equation*}
+	P(k,t)=\sum\limits_{n=-\infty}^\infty P_n(t)e^{ikn}
+\end{equation*}
+and multiply each master-equation for a given $n$ by $e^{ikn}$.\\
+The sum of all Mster-equations is given by:
+\begin{align*}
+	\frac{\partial P(k,t)}{\partial t}&=\sum\limits_{n=-\infty}^\infty e^{ikn}\frac{\partial P_n}{\partial t}=\sum\limits_{n=-\infty}^\infty e^{ikn}\left(\gamma (P_{n-1}+P_{n+1})-2P_n\right)\\
+	&=\left(\gamma \left(e^{ik}+e^{-ik}\right)-2\right)P(k,t) \qquad (\ast\ast)
+\end{align*}
+Initial condition: $P(k,0)=\sum\limits_n\underset{\delta_{n,0}}{\underbrace{P_n(0)}}e^{ikn}=1$
+Eq. ($\ast\ast$) ca be solved easily:
+\begin{equation*}
+	\int\limits_1^{P(k,t)}\frac{dP'}{P'}=\int\limits_0^t[2\gamma\cos(k)-2]dt\leadsto\ln(P(k,t))=2(\gamma\cos(k)-1)t
+\end{equation*}
+or:
+\begin{equation*}
+	P(k,t)=\exp\left(2(\gamma\cos(k)-1)t\right)=\sum\limits_{n=-\infty}^\infty P_n(t)e^{ikn}
+\end{equation*}
+Generating function of the modified Bessel-function
+\begin{equation*}
+	e^{z\cos(k)}=\sum\limits_{n=-\infty}^\infty I_n(z)
+\end{equation*}
+Comparieing to the solution of $P(k,t)$ we get:
+\begin{equation*}
+	P(k,t)=e^{-2z}e^{2\gamma t\cos(k)}\Rightarrow P_n(t)=I_n(2\gamma t)e^{-2t}
+\end{equation*}
+We now consider the transition to continous space. We first notice that
+\begin{align*}
+	f'(x)&=\lim\limits_{\Delta x\to 0}\frac{f(x+\Delta x)-f(x)}{\Delta x} \qquad \text{and}\\
+	f''(x)&=\lim\limits_{\Delta x\to 0}\frac{f'(x+\Delta x)-f'(x)}{\Delta x}\\
+	&=\lim\limits_{\Delta x\to 0} \frac{f(x+2\Delta x)-f(x+\Delta x)-f(x+\Delta x)+f(x)}{(\Delta x)^2}
+\end{align*}
+If we now identify $f(x+2\Delta x)$ by $P_{n+1}$ and consider $\Delta x=1$ we get by comparison:
+\begin{equation*}
+	\frac{\partial P(x,t)}{\partial t}=\frac{\partial^2 P(x,t)}{\partial x^2}
+\end{equation*}
+This partial differential equation (PDE) is called \textbf{diffusion equation}. It is more generally given by:
+\begin{equation*}
+	\frac{\partial P(x,t)}{\partial t}=D\frac{\partial^2P(x,t)}{\partial x^2}
+\end{equation*}
+This equation is solved by Fouriertransform, where
+\begin{align*}
+	P(k,t)&=\int\limits_{-\infty}^\infty P(x,t)e^{ikx}dx; P(x,t)=\frac{1}{2\pi}\int\limits_{-\infty}^\infty P(k,t)e^{-ikx}dk\\
+	&\leadsto\frac{\partial P(k,t)}{\partial t}=-Dk^2P(k,t)\ \Rightarrow \ P(k,t)=P(k,0)e^{-k^2Dt}
+\end{align*}
+using $P(x,t=0)=\delta(x)\leadsto P(k,0)=1\quad P(k,t)=e^{-k^2Dt}$\\
+Inverting the Fouriertransform we obtain:
+\begin{equation*}
+	P(x,t)=\frac{1}{2\pi}\int e^{-Dk^2t}e^{-ikx}dk=\frac{1}{\sqrt{4\pi Dt}}e^{-\frac{x^2}{4Dt}}
+\end{equation*}

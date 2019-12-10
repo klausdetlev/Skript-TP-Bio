@@ -1,0 +1,79 @@
+\noindent\textbf{\underline{\smash{Normal forms}}}: The form $\dot{x}=r\pm x^2$ is prototypical for saddle-node bifurcations. This can be understood from the following argument:\\
+We consider $\dot{x}=f(x,r)$ near the bifurcation point at $x=x^\ast$ and $r=r_c$.
+\begin{equation*}
+	\leadsto \dot{x}=f(x,r)=f(x^\ast,r_c) + (x-x^\ast)\frac{\partial f}{\partial x}\Big|_{(x^\ast,r_c)}+(r-r_c) \frac{\partial f}{\partial r}\Big|_{(x^\ast,r_c)}+\frac{1}{2}(x-x^\ast)^2\frac{\partial^2 f}{\partial x^2}\Big|_{(x^\ast,r_c)} + \cdots
+\end{equation*}
+We neglect terms of the order $(r-r_c)^2$ and $(x-x^\ast)^3$. We also realize that $f(x^\ast,r_c)=0$ because $x^\ast$ is a fixed point.\\
+We also have $\frac{\partial}{\partial x}f\Big|_{(x^\ast,r_c)}=0$ by the tangency condition. Therefore, we are left with:
+\begin{equation*}
+	\dot{x}=a(r-r_c)+b(x-x_c)^2+\cdots \qquad \text{"normal form"{} of the bifurcation}
+\end{equation*}
+where $a=\frac{\partial f}{\partial r}\Big|_{(x^\ast,r_c)}$ and $b=\frac{\partial^2 f}{\partial x^2}\Big|_{(x^\ast,r_c)}$\vspace{0.5cm}\\
+\textbf{\underline{\smash{Transcritical bifurcation}}}\vspace{0.2 cm}\\
+Normal form of a transcritical bifurcation
+\begin{equation*}
+	\dot{x}=rx-x^2 \qquad \text{$r$ can be a positive or negative (or zero)}
+\end{equation*}
+\begin{figure}[H]
+	\setlength\columnsep{2 cm}
+	\begin{multicols}{3}
+		\begin{figure}[H]
+			\begin{tikzpicture}
+				\draw[->] (-2.5,0)--(2.5,0)node[below right]{$x$};
+				\draw[->] (0,-2.5)--(0,2.5)node[above left]{$\dot{x}$};
+				\draw[domain=-2:1,samples=50] plot(\x,{-\x-(\x)^2});
+				\draw[black,fill=white] (-1,0)circle(2pt);
+				\draw[black,fill=black] (0,0)circle(2pt);
+			\end{tikzpicture}
+		\end{figure}\columnbreak
+		\begin{figure}[H]
+			\begin{tikzpicture}
+				\draw[black,fill=black] (0,0)circle(2pt);
+				\draw[white,fill=white] (0,0.1)--(0.2,0.1)--(0.2,-0.1)--(0,-0.1)--cycle;
+				\draw[black] (0,0)circle(2pt);
+				\draw[->] (-2.5,0)--(2.5,0)node[below right]{$x$};
+				\draw[->] (0,-2.5)--(0,2.5)node[above left]{$\dot{x}$};
+				\draw[domain=-1.5:1.5,samples=50] plot(\x,{-(\x)^2});
+			\end{tikzpicture}
+		\end{figure}\columnbreak
+		\begin{figure}[H]
+			\begin{tikzpicture}
+				\draw[->] (-2.5,0)--(2.5,0)node[below right]{$x$};
+				\draw[->] (0,-2.5)--(0,2.5)node[above left]{$\dot{x}$};
+				\draw[domain=-1:2,samples=50] plot(\x,{\x-(\x)^2});
+				\draw[black,fill=black] (0,0)circle(2pt);
+				\draw[black,fill=white] (1,0)circle(2pt);
+			\end{tikzpicture}
+		\end{figure}
+	\end{multicols}
+\end{figure}
+\noindent In case of the transcritical bifurcation we always have a fixpoint at $x^\ast=0$ independent of $r$. There is an exchange of stability between the fixed points at $r=0$. The bifurcation diagram is given as follows:
+\begin{figure}[H]
+	\begin{tikzpicture}
+		\draw (-3,0)--(0,0);
+		\draw[->,dashed] (0,0)--(3,0)node[below right]{$r$};
+		\draw[->] (0,-3)--(0,3)node[above left]{$x$};
+		\draw[dashed,domain=-3:0] plot(\x,\x);
+		\draw[domain=-3:0] plot(\x,0);
+		\draw[domain=0:3] plot(\x,\x);
+	\end{tikzpicture}
+\end{figure}
+%Hier kommt das verpasste hin, nicht vergessen!
+\underline{\smash{Example}}: Show that the first-order system
+\begin{equation*}
+	\dot{x}=x(1-x^2)-a\left(1-e^{-bx}\right)
+\end{equation*}
+undergoes a transcritical bifurcation at $x^\ast=0$ for certain parameter values $a,b$.\\
+\textbf{Solution}: We first notice that $\dot{x}=0$ at $x=0$ independent of $a,b$.\\
+For small values of $x$, we get:
+\begin{equation*}
+	1-e^{-bx}=1-\left[1-bx+\frac{1}{2}b^2x^2+\mathcal{O}\left(x^3\right)\right]=bx-\frac{1}{2}b^2x^2+\mathcal{O}\left(x^3\right)
+\end{equation*}
+This leads to:
+\begin{align*}
+	\dot{x}&=x-a\left(bx-\frac{1}{2}b^2x^2\right)+\mathcal{O}\left(x^3\right)\\
+	&=(1-ab)x+\left(\frac{1}{2}b^2\right)x^2+\mathcal{O}\left(x^3\right)\\
+	\Rightarrow\ &\text{The non-zero fixed point is given at } (1-ab)+\frac{1}{2}ab^2x=0\\
+	&\Rightarrow x^\ast=\frac{2(ab-1)}{ab^2}
+\end{align*}
+Note that this result is only valid if $x^\ast$ is small.\vspace{0.5 cm}\\

@@ -1,0 +1,72 @@
+\textbf{\underline{\smash{Central limit theorem}}} (CLT)\vspace{0.2cm}\\
+We notice that the different kinds of random walk \textbf{converge} to a gaussian, independent of the details of the single step distribution. This result is related to the CLT.\\
+We consider a 1-D random walk in discrete time with a displacement $X_N$ drawn from continuous distribution $p(x)$. The displacement $y_N=\sum\limits_{n=1}^Nx_n$ in the large $n$-limit is accordingly to the CLT given by:
+\begin{equation*}
+	P_N(y)=\frac{1}{\sqrt{2\pi N\sigma^2}}e^{-\frac{\left(y-N\langle x\rangle\right)^2}{2N\sigma^2}}
+\end{equation*}
+where $\sigma^2=\langle x^2\rangle - \langle x\rangle^2$.\\
+The necessary conditions for the CLT are the following
+\begin{enumerate}[label={$(\roman*)$}]
+	\item $\langle x\rangle \&\langle x^2\rangle$ are finite
+	\item The first two moments of the \textbf{initial} spatial distribution are finite
+	\item The steps are independent
+\end{enumerate}
+We immediately see that:
+\begin{equation*}
+	\langle y_n\rangle =N\langle x\rangle \text{ and } \text{var}\left(y_N\right)=N\sigma^2
+\end{equation*}
+The CLT can be motivated from the following consideration: $P_N(Y)$ can be obtained from the recursion relation:
+\begin{equation*}
+	P_N(Y)=\int\limits_{-\infty}^\infty P_{N-1}(y')p(y-y')dy'
+\end{equation*}
+(Chapman-Kolmogorov-equation)\\
+The Chapman-Kolmogorov equation is a convolution which leads to the recurrence $P_N(k)=P_{N-1}(k)p(k)$ in Fourier-space. The recurrence is solved by $P_N(k)=P_0(k)\left[p(k)\right]^N$. For $P_0(x)=\delta_{x,0}$ we get $P_0(k)=1 \& P_N(k)=\left[p(k)\right]^N$.\\
+The distribution in real space is then given by
+\begin{equation*}
+	P_N(y)=\frac{1}{2\pi}\int\limits_{-\infty}^\infty\left[p(k)\right]^Ne^{-iky}dk
+\end{equation*}
+We now find that
+\begin{align*}
+	p(k)&=\int\limits_{-\infty}^\infty p(x)e^{ikx}dx=\int\limits_{-\infty}^\infty p(x)\left[1+ikx-\frac{1}{2}k^2x^2+\mathcal{O}(x^3)\right]dx\\
+	&=1+ik\langle x\rangle -\frac{1}{2}k^2\langle x^2\rangle +\cdots
+\end{align*}
+The first two moments exist by assumption. Therefore, we get:
+\begin{align*}
+	P_N(y)&\approx\frac{1}{2\pi}\int\limits_{-\infty}^\infty\left[1+ik\langle x\rangle-\frac{1}{2}k^2\langle x^2\rangle\right]^Ne^{-iky}dk\\
+	&=\frac{1}{2\pi}\int\limits_{-\infty}^\infty\exp\left[N\ln\left(1+ik\langle x\rangle-\frac{1}{2}k^2\langle x^2\rangle\right)\right]e^{-iky}dk\\
+	&\underset{\mathcal{O}(\langle x\rangle ^2,\langle x^2\rangle)}{\approx}\frac{1}{2\pi}\int\limits_{-\infty}^\infty\exp\left[N\left(ik\langle x\rangle -\frac{k^2}{2}\left(\langle x^2\rangle -\langle x\rangle^2\right)\right)\right]e^{-iky}dk
+\end{align*}
+From which follows the assumption by completing the square.\vspace{0.5cm}\\
+\textbf{\underline{\smash{Natural boundaries}}}\vspace{0.2cm}\\
+So far we discussed only processes which have been defined on infinite lattices. For many applications however, the boundaries play an important role. Here, we discuss the boundaries for a stochastic process, which is described by the following Master-equation.
+\begin{equation*}
+	\dot{p}_n=r(n+1)p_{n+1}+g(n-1)p_{n-1}-\left\{r(n)+g(n)\right\}p_n
+\end{equation*}
+where $g(n),p(n)$ are simple analytic functions of the position. Next to the bulk equation, the dynamics has to be specified at the boundaries, e.g.
+\begin{equation*}
+	\dot{p}_0=r(1)p_1-g(0)p_0;\qquad \dot{p}_N=g(N-1)p_{N-1}-r(N)p_N
+\end{equation*}
+The boundaries are called natural if the bulk equation is valid down to $n=1$ and $r(0)$ and similar for $N$. The latter condition makes shure that if one considers $p_N(0)$ for $n<0$ $p_n(t)$ remains zero at all times for negative values of $n$.\vspace{0.1cm}\\
+\underline{\smash{Example}}: The linear one-step process with natural boundary conditions:
+\begin{equation*}
+	\dot{p}_n=a(r+(n+1))p_{n+1}+b(g+(n-1))p_{n-1}-\left\{a(r+n)+b(g+n)\right\}p_n
+\end{equation*}
+with the condition $p_n(0)=\delta_{nm}$ $\&$ $a\neq 0;b\neq 0, a\neq b$\\
+Multiplikation by $z^n$ and summation over $n$ gives:
+\begin{align*}
+	\frac{\partial F(z,t)}{\partial t}&=\sum\limits_{n=0}^\infty \dot{p}_n(t)z^n=a\sum \left(z^{n-1}-z^n\right)(r+n)p_n+b\left(z^{n+1}-z^n\right)(g+n)p_n\\
+	&=ar(\frac{1}{z}-1)F+a(1-z)\frac{\partial F}{\partial z}+bg(z-1)F+b(z^2-z)\frac{\partial F}{\partial z}\\
+	&=(1-z)(a-bz)\frac{\partial F}{z}+(1-z)\left(\frac{ar}{z}-bg\right)F
+\end{align*}
+Solution of the equations by the method of characteristics. The characteristic curves in the $(z,t)$-plane are given by:
+\begin{equation*}
+	-dt=\frac{dz}{(1-z)(a-bz)} \qquad (\ast)
+\end{equation*}
+The characteristics are curves along which the information about the solution propagates. Integration of the equation above leads to:
+\begin{equation*}
+	\frac{1-z}{a-bz}e^{(b-a)t}=C \quad\text{ which is an integration constant}
+\end{equation*}
+The variation of the $F$ along the characteristic curve is given by:
+\begin{equation*}
+	-\frac{dz}{a-bz}=\frac{d\log(F)}{\frac{ar}{z}-bg}\leadsto 
+\end{equation*}

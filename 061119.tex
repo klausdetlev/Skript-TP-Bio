@@ -1,0 +1,109 @@
+\section{Non-linear Systems in Biology}
+\subsection{Examples and linear systems}
+\subsubsection{Discrete linear systems - Recursive deterministic Models}
+\paragraph{Recursive models} Discrete time, the state at time $t$ is determined by a linear function of the state variable at time $t-1$.\\
+E.g.: Bacterial population: $P_{t+1}=2P_t$
+\begin{equation*}
+\leadsto P_{t+n}=2^nP_t
+\end{equation*}
+A slightly more complicated example is given by the production and degradation of red blood cells. Red blood cells are produced by the bone marrow and eventually degradated.\\
+In the model we consider the evolution of the number of cells on a day by day basis:
+\begin{equation*}
+R_n=(1-f)R_{n-1}+M_{n-1} \qquad M_n=gfR_{n-1}
+\end{equation*}
+\begin{align*}
+	&M_n=\# \text{ of new blood cells} &g=\text{ production rate per degradated blood cell}\\
+	&R_n=\# \text{ of circulation blood cells} &f=\text{ fraction of degradated cells}
+\end{align*}
+\underline{Steady state?}
+\begin{itemize}[label={$\to$}]
+	\item eliminate $M_{n-1}$
+		\begin{equation*}
+			R_n=(1-f)R_{n-1}+M_{n-1}=(1-f)R_{n-1}+gfR_{n-2}
+		\end{equation*}
+		Steady state if: $R_n=R_{n-1}=R_{n-2}=R$
+		\begin{equation*}
+			\Rightarrow R=(1-f)R +gfR \leadsto \text{Steady state for $f=0$ \& $R=0$}
+		\end{equation*}
+		We get a non-trivial stationary state if
+		\begin{equation*}
+			Rf=fgR \quad \leadsto g=1
+		\end{equation*}
+\end{itemize}
+This implies that the system is at a steady state for any value of $R$ if $g$ equals $\num{1}$\\
+Remark: The equation can conveniently be written in a matrix form
+\begin{equation*}
+	\begin{pmatrix} R \\ M\end{pmatrix}_{n+k}=\begin{pmatrix} 1-f & 1 \\ gf & 0 \end{pmatrix}^k\begin{pmatrix}R\\ M\end{pmatrix}_n
+\end{equation*}
+\subsubsection{Continuous linear systems}
+It is often appropriate to describe the time evolution of a dynamic system in continuous time, even if discrete events take place, e.g. the description of a bacterial biofilm in terms of mass and density rather then in terms of the number of bacteria.\\
+We first consider the case of linear systems, e.g.
+\begin{align*}
+	\dot{x}&=y &\dot{x}=\frac{d}{dt}x\\
+	\dot{y}&=-x
+\end{align*}
+The system is linear, since the rhs of the system of differential equations is linear in $x$ and $y$.\\
+Systems of linear differential equations of first order can bei described by 
+\begin{equation*}
+	\frac{d\vec{x}}{dt}=\dot{\vec{x}}=\mat{A}\vec{x}
+\end{equation*}
+$\vec{x}(t)$ is a vector of funcions $x_i(t)$ and $\mat{A}$ is a matrix with coefficients $a_{ij}$. A generalization of a linear system is the affine system
+\begin{equation*}
+	\dot{\vec{x}}=\mat{A}\vec{x}+\vec{u}
+\end{equation*}
+where the vector $\vec{u}$ represents the "pertubations"{} of the system. The coefficients of $\mat{A}$ can be constants of functions $a_{ij}(t)$. The time evolution of $x_i(t)$ is given by:
+\begin{equation*}
+	\dot{x}_i(t)=\frac{dx_i(t)}{dt}=\sum\limits_{j=1}^na_{ij}x_j(t)+u_i(t) \qquad i=1,\ldots ,n
+\end{equation*}
+In case of $u(t)=0$, we have a homogeneous system, which has a fixpoint if $\mat{A}\vec{x}=0$\\
+If $\text{rank}(\mat{A})=n$, it follows that $\text{det}(\mat{A})\neq 0$. Then the solution of the linear system is unique and given by $\vec{x}=0\quad \forall t$.\\
+If $\text{det}(\mat{A})=0$, the linear equations are dependent and the solutions exist on a hyperplane.
+\subsubsection{Solutions of a linear system}
+\underline{\smash{\textbf{The matrix exponential}}}\vspace{0.2 cm}\\
+The Taylor-Series of an exponential function is given by:
+\begin{equation*}
+	e^x=\sum\limits_{n=0}^\infty \frac{x^n}{n!}
+\end{equation*}
+Analogoulsy, we can define the \textbf{matrix exponential}
+\begin{equation*}
+	H=\sum\limits_{k=0}^\infty \frac{\vec{\vec{P}}^k}{k!}=:e^{\vec{\vec{P}}}
+\end{equation*}
+Here, we are particularly interested in the matrix $\vec{\vec{P}}=\mat{A}t;$ i.e.:
+\begin{equation*}
+	e^{\mat{A}t}=\sum\limits_{k=0}^\infty \frac{(\mat{A}t)^k}{k!} \text{ and } e^{-\mat{A}t}=\sum\limits_{k=0}^\infty (-1)^k\frac{(\mat{A}t)^k}{k!}
+\end{equation*}
+We can easily verify that ($\mat{A}$ const.)
+\begin{equation*}
+	\frac{d}{dt}e^{\mat{A}t}=\sum\limits_{k=1}^\infty \frac{\mat{A}^kt^{k-1}}{(k-1)!}=\mat{A}\sum\limits_{k=0}^\infty \frac{(\mat{A}t)^k}{k!}=\mat{A}e^{\mat{A}t}
+\end{equation*}
+(Similarly: $\frac{d}{dt}e^{-\mat{A}t}=-\mat{A}e^{-\mat{A}t}$)\vspace{0.5 cm}\\
+\underline{\smash{\textbf{Solution of the linear system $\dot{\vec{x}}=\mat{A}x$}}}\vspace{0.2 cm}\\
+\underline{Theorem}: Let $\mat{A}$ be a constant matrix; i.e. $a_{ij}$ are not time-dependent.
+\begin{equation*}
+	\text{Then we get: } \vec{x}(t)=\vec{x}_0e^{\mat{A}t}
+\end{equation*}
+The proof follows from Taylorexpansion of the rhs.\\
+\underline{\smash{\textbf{The inhomogeneous system $\dot{\vec{x}}=\mat{A}\vec{x}+\vec{u}$}}}\\
+\underline{Theorem}: The solutions $\vec{x}(t)$ of the inhomogeneous system $\vec{x}(t)=\mat{A}\vec{x}+\vec{u}$ given the initial conditions $\vec{x}_0$ are given by:
+\begin{equation*}
+	\vec{x}(t)=\vec{x}_n(t)+\vec{x}_p(t)
+\end{equation*}
+where $\vec{x}_n=e^{\mat{A}(t-t_0)}\vec{x}_0;\quad \vec{x}_p=\int\limits_{t_0}^t e^{\mat{A}(t-\tau)}\vec{u}(\tau)d\tau$ and $\vec{x}_0=\vec{x}(t_0)$\\
+\underline{Proof}: From $\dot{\vec{x}}=\mat{A}\vec{x}+\vec{u}$ we get $\dot{\vec{x}}-\mat{A}\vec{x}=\vec{u}$
+\begin{equation*}
+	\leadsto e^{-\mat{A}t}\dot{\vec{x}}-e^{-\mat{A}t}\mat{A}\vec{x}=e^{-\mat{A}t}\vec{u}
+\end{equation*}
+The left hand side of the equation can be understood as the derivative of the product $e^{-\mat{A}t}$
+\begin{equation*}
+	\leadsto \frac{d}{dt}\left(e^{-\mat{A}t}\vec{x}\right)=e^{-\mat{A}t}\vec{u}
+\end{equation*}
+\begin{equation*}
+	\int \frac{d}{dt}\left(e^{-\mat{A}t}\vec{x}\right)dt = e^{-\mat{A}t}\vec{x}(t)=\int e^{-\mat{A}t}\vec{u}(t)dt
+\end{equation*}
+Or, integrating from $t_0$ to $t$:
+\begin{equation*}
+	e^{-\mat{A}t}\vec{x}(t)-e^{-\mat{A}t_0}\vec{x}(t_0)=\int\limits_{t_0}^{t}e^{-\mat{A}\tau}\vec{u}(\tau)d\tau
+\end{equation*}
+\begin{equation*}
+	\leadsto \vec{x}(t)=e^{\mat{A}(t-t_0)}\vec{x}(t_0)+\int\limits_{t_0}^te^{\mat{A}(t-\tau)}\vec{u}(\tau)d\tau
+\end{equation*}

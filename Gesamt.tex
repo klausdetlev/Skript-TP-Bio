@@ -1,0 +1,65 @@
+\documentclass[12 pt]{article}
+%\documentclass[12 pt,a4paper,landscape,twocolumn]{article}
+
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb,siunitx,lmodern,graphicx,latexsym,tikz}
+\usetikzlibrary{calc}
+\usepackage{multicol}
+\usepackage{enumitem}
+
+\usepackage{hyperref}
+\usepackage{float}
+
+\renewcommand{\vec}[1]{\underline{\smash{#1}}}
+\newcommand{\mat}[1]{\underline{\underline{#1}}}
+\newcommand{\R}{\mathbb{R}}
+
+\hypersetup{
+	colorlinks=true,
+	urlcolor={black!90!blue},
+	linkcolor={black!90!blue},
+	citecolor={black!90!blue}
+}
+
+\newcommand{\koord}[6]{
+	\draw[->] (#1,0)--(#2,0)node[below right]{#5};
+	\draw[->] (0,#3)--(0,#4)node[above left]{#6};
+}
+
+\begin{document}
+\title{Theoretische Biophysik}
+\author{Ludger Santen}
+\pagenumbering{gobble}
+\maketitle
+\clearpage
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+\section*{Literatur}
+\begin{itemize}[label={}]
+\item "`A first course in system biology"', Eberhard o. Voit, Garland Science
+\item "`Physical biology of the cell"', Rob Phillips et al., Garland Science
+\item "`Stochastic \& Bio"', P. Bresloff (Empfohlen von Santen)
+\item "`Nonlinear Dynamics \& Chaos"', Steven H. Strogatz, Perseus
+\item "`Stochastic Processes in Physics and Chemistry"', N. G. van Kampen, North Holland
+\item "`Stochastic Methods"', Crispni Gardiner, Springer
+\end{itemize}
+\section*{Moodle-Passwort}
+TheoBio1920 (if this won't work, then "Bio" must be written small: "bio")
+\clearpage
+\input{171019}
+\input{231019}
+\input{241019}
+\input{301019}
+\input{311019}
+\input{061119}
+\input{071119}
+\input{131119}
+\input{201119}
+\input{211119}
+\input{271119}
+\input{041219}
+\input{051219}
+\end{document}
