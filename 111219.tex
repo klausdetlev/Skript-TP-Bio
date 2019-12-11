@@ -1,0 +1,105 @@
+\textbf{\underline{\smash{First-passage properties of RW}}}\\
+\begin{itemize}[label={\textbullet}]
+	\item Important for many biological processes including the firing of neurons or signaling processes.\\
+\end{itemize}
+Here we briefly summarise first-passage properties of random walks. We first ask the question: Does a random walk, that starts at the origin of an infinite lattice at $t=0$ eventually return to its starting point?\vspace{0.1cm}\\
+The answer is the following ($d$ spatial dimension):
+\begin{itemize}
+	\item[] $d\leq 2$: The random walk returns with probability 1 (recurrent random walk)
+	\item[] $d>2$: There is a finite probability that the random walker never returns (transient random walk)
+\end{itemize}
+This can be understood from a simple scaling argument. The region that is explored by the random walk grows as $l\sim\sqrt{Dt}$. The number of visited sites is obviously $\sim t$. Therefore the density of visited sites in the explored region behaves as $\rho\sim\frac{t}{l^d}\sim t^{1-\frac{d}{2}}$\\
+The density is obviously decreasing for $d>2$.\\
+We now give a more detailed discussion of the first passage probability $F(\vec{r},t)$ which is related to the recurrence or transience of random walks.\\
+We first note that:
+\begin{equation*}
+	P(\vec{r},t)=\int\limits_0^tF(\vec{r},t')\vec{P}(\vec{0},t-t')dt'+\delta_{I,0}\delta(t)
+\end{equation*}
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[>=stealth]
+		\node[name=o] at (0,0){$\times$};
+		\node[name=r] at (3,4){$\times$};
+		\node[below right] at (r){$\vec{r},t$};
+		\node[below] at (o){$\vec{0},t$};
+		\draw[->] (o)--(r);
+		\node[name=g] at (3.5,2){=};
+		\node[name=d] at (4,2){$\cdot$};
+		\node[name=p] at (5,2){+};
+		\node[name=o2] at (5.5,0){$\times$};
+		\node[name=r2] at (8.5,4){$\times$};
+		\node[below right] at (d){$\vec{0},t$};
+		\draw[->] (o2)--(r2);
+		\draw[->] (9.5,1)--(13.5,1);
+		\draw[->] (11.5,0)--(11.5,4);
+		\draw[domain=-2:2,samples=100] plot({\x+11.5},{3*exp(-(\x)^2)/sqrt(3.141)+1})plot({\x+11.5},{6*exp(-(\x)^2/2)/sqrt(3.141)/sqrt(2)+1});
+	\end{tikzpicture}
+\end{figure}
+\noindent
+\begin{itemize}[label={$\cdot$}]
+	\item $\delta_{\vec{r},0}$ denotes the kronecker $\delta,\delta(t)$ the Dirac-Delta Function
+	\item $P(\vec{r},t)$ the probability that a given site at $\vec{r}$ is occupied at time $t$
+	\item $F(\vec{r},t)$ the probability that the random walk \textbf{first} reaches $\vec{r}$ at time $t$.
+\end{itemize}
+The validity of the equation van be occupied from the following decomposition:\\
+$F(\vec{r},t')$ denotes the probability that the random walk reaches $\vec{r}$ first at time $t'$. Then the probability $P(\vec{r},t)$ is given by the probability that a first visit at time $t'$ is followsd by a loop during $t-t'$. In terms of a diagrammatic expression this decomposition can be visualized by
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[>=stealth]
+		\node[name=o] at (0,0){$\times$};
+		\node[name=r] at (3,4){$\times$};
+		\node[below right] at (r){$\vec{r},t$};
+		\node[below] at (o){$\vec{0},t$};
+		\draw[->] (o)--(r);
+		\node[name=g] at (3.5,2){=};
+		\node[name=d] at (4,2){$\cdot$};
+		\node[name=p] at (5,2){+};
+		\node[name=o2] at (5.5,0){$\times$};
+		\node[name=r2] at (8.5,4){$\times$};
+		\node[below right] at (d){$\vec{0},t$};
+		\draw[->] (o2)--(r2);
+	\end{tikzpicture}
+\end{figure}
+\noindent lik in a Chapman-Kolmogorov equation the expression above involves a convolution. Since the lower boundary is given by $\num{0}$ rather than $-\infty$ we Laplace- instead of Fourier-transform.\\
+The Laplace transforms are given by:
+\begin{equation*}
+	P(\vec{r},s)=\int\limits_0^\infty P(\vec{r},t)e^{-st}dt \qquad \& \qquad F(\vec{r},s)=\int\limits_0^\infty F(\vec{r},t)e^{-st}dt
+\end{equation*}
+Applying the Laplace-Transform the equation above, we get:
+\begin{equation*}
+	P(\vec{r},s)=F(\vec{r},s)P(\vec{0},s)+\delta_{\vec{r},0}
+\end{equation*}
+\begin{equation*}
+	\leadsto F(\vec{r},s)=\frac{P(\vec{r},s)-\delta_{\vec{r},0}}{P(\vec{0},s)}
+\end{equation*}
+From now on we consider $\vec{r}=0$. The eventual return probability is given by:
+\begin{equation*}
+	R=\int\limits_0^\infty F(\vec{0},t)dt; \quad \text{ i.e. the probability that the walk returns at any time}
+\end{equation*}
+We now specify our considerations for a lattice random walk in continuous time. Then we hace for the occupation of the origin:
+\begin{equation*}
+	P(t)=\left[I_0(2t)e^{-2t}\right]^d\simeq \frac{1}{(4\pi t)^\frac{d}{2}} \qquad t\to\infty
+\end{equation*}
+In order to compute $R$ we first recall that:
+\begin{equation*}
+	f(s)=\int\limits_0^\infty t^{-r}e^{-st}dt \text{ for $f(t)=t^{-r}$}
+\end{equation*}
+By substituting $x=st$ we get:
+\begin{equation*}
+	f(s)=s^{\mu-1}\int\limits_0^\infty x^{-\mu}e^{-x}=\underset{\text{gamma-function}}{\underbrace{\Gamma(1-\mu)}}s^{\mu-1}
+\end{equation*}
+using the definition of the $\Gamma$-Function:
+\begin{equation*}
+	\Gamma(z)=\int\limits_0^\infty x^{z-1}e^{-x}dx
+\end{equation*}
+We use this relation at low dimensions, where the entire probability distribution $P(\vec{r},t)$ is dominated by the algebraic tail in the large $t$ limit, which in turn governs the small $s$ asymptotics of $P(s)$.
+By now using $\Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}$ and the result above, we get $P(s)\simeq\frac{1}{\sqrt{4s}}$ and therefore: $F(\vec{0},s)\equiv F(s)\simeq 1-\sqrt{4s}$.\\
+By definition, we have $R=F(0)=1$ which implies that the 1D random walk is recurrent!\\
+In order to get the asymptotic behaviour of $F(t)$, we apply the following trick:
+\begin{equation*}
+	\frac{dF(s)}{ds}=-\int\limits_0^\infty F(t)e^{-st}dt=\frac{1}{\sqrt{s}}
+\end{equation*}
+By using the fact, that the Laplace transform of $t^{-\mu}$ is given by $\Gamma(1-\mu)s^{\mu-1}$ we obtain that:
+\begin{equation*}
+	tF(t)\simeq (\pi t)^{-\frac{1}{2}} \qquad\text{ or }\qquad F(t)\simeq\frac{1}{\sqrt{\pi}}\frac{1}{t^\frac{3}{2}}
+\end{equation*}
