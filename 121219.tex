@@ -1,0 +1,22 @@
+\textbf{\underline{\smash{The case $d=2$}}} is more subtile since the time integral diverges only logarithmically for $t\to\infty$. In this case, we get:
+\begin{equation*}
+	F(s)\simeq 1+\frac{4\pi}{\ln(s)} \qquad (\text{for $s\to 0$})
+\end{equation*}
+Again the random walk is recurrent since $\lim\limits_{s\to 0} F(s)=R=1$.\\
+The asymptotic behaviour is obtained from
+\begin{equation*}
+	\int\limits_0^\infty tF(t)e^{-st}dt\simeq\frac{4\pi}{s\left(\ln(s)\right)^2} \qquad \text{ when } s\to\infty \underset{t\to\infty}{\leadsto}F(t)\simeq\frac{4\pi}{t\left[\ln(t)\right]^2}
+\end{equation*}\vspace{0.2cm}
+\textbf{\underline{\smash{The case $d=3$}}}:\vspace{0.2cm}\\
+In this case the integral $P(s)=\int\limits_1^\infty\frac{1}{\left(4\pi t\right)^\frac{3}{2}}e^{-st}dt$ converges
+\begin{align*}
+	-\frac{dP(s)}{ds}&=\int\limits_0^\infty \frac{1}{\left(4\pi\right)^\frac{3}{2}}\frac{e^{-st}}{t^\frac{1}{2}}dt=\frac{1}{8\pi}\frac{1}{\sqrt{s}}\\
+	\Rightarrow P(s)&=P(0)-\frac{\sqrt{s}}{4\pi}\\
+	\leadsto F(s)&=1-\frac{1}{P(s)}\simeq 1-\frac{1}{P(0)}-\frac{\sqrt{s}}{4\pi P(0)^2}=R-\frac{\left(1-R\right)^2\sqrt{s}}{4\pi}\\
+	R=F(0)&=1-\frac{1}{P(0)}
+\end{align*}
+This result implies that $R\neq 1$ such that the random walk is transient.\\
+Asymptotic form:
+\begin{equation*}
+	F(t)=\frac{\left(1-R\right)^2}{8\pi^\frac{3}{2}}\frac{1}{t^\frac{3}{2}}
+\end{equation*}
