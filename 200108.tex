@@ -1,0 +1,64 @@
+\subsection{Reaction-Diffusion Models}
+In this chapter we discuss the interplay between reaction and diffusion.
+\begin{itemize}[label={}]
+	\item Turing ('52): A reaction-diffusion system can generate spatial-temperal patterns.
+	\item Giever\&{}Meinhardt: Realization by an antagonistic pair of molecular species, a slowly diffusing chemical activator and a quickly moving inhibitor
+\end{itemize}
+\subsubsection{Protein-Concentration-Gradients}
+Concentration gradients play a crucial role in spacial regulation or patterning (Morphogen: Signaling molecules, cellular responses depend on its concentration)\vspace{0.1cm}\\
+\textbf{\underline{\smash{Typical scenario}}}\vspace{0.2cm}\\
+Morphogen is distributed from a local source in the cell, diffuses away from the source and deradates. Above a critical threshhold expression of specific genes takes place.\\
+The regulation via morphogen was first discussed in the context of embryonic development (morphogenesis) but there is evidence that the intracellular gradients play a role in many cellular processes.\vspace{0.2cm}\\
+\textbf{\underline{\smash{Spatially distributed signaling cascades}}}\vspace{0.3cm}\\
+\textbf{\underline{\smash{System:}}}
+\begin{itemize}[label={$-$}]
+	\item activating enzyme located in the cell membrane
+	\item deactivating enzyme freely diffusing in the cytoplasma
+	\item 1D system (e.g. cylindrical bacteria cell)
+	\item here: kinase located at $x=0$, generating a phosphorylated protein at rate $\nu_+$ ("activated protein")
+	\item The phosphatase deactivates the protein at rate $\nu_-=k_-c^\ast$\\
+		$c^\ast$ is the concentration of the activated protein.
+\end{itemize}
+The time evolution of $c^\ast$ is described by the following set of equations:
+\begin{equation*}
+	\frac{\partial c^\ast(x,t)}{\partial t}=D\frac{\partial^2c^\ast(x,t)}{\partial x^2}-k_-c^\ast(x,t)
+\end{equation*}
+Boundary equations:
+\begin{align*}
+	\underset{\underset{\text{term are balanced at $x=0$}}{\text{diffusive current and source}}}{-D\frac{\partial c^\ast}{\partial x}\Big|_{x=0}=\overset{\overset{\text{source $x=0$}}{\downarrow}}{\nu_+}} \qquad & \qquad \underset{\underset{\text{crossing the boundary at $x=L$}}{\text{no diffusive current is}}}{\frac{\partial c^\ast}{\partial x}\Big|_{x=L}=0}
+\end{align*}
+We can easily get the stationary state of the system given by
+\begin{equation*}
+	c^\ast(x)=c^\ast(0)\cdot\left(\frac{e^\frac{x}{\lambda}+e^{2\frac{x}{\lambda}}+e^{-\frac{x}{\lambda}}}{1+e^{2\frac{x}{\lambda}}}\right);\quad \lambda = \sqrt{\frac{D}{k_-}}
+\end{equation*}
+Typically the exponential decay is rather steep, to steep to transport a signal over long distances $\to$ cascade of protein modification cycles.\vspace{0.1cm}\\
+We denote the level of activated (deactivated) protein at the $n$th cascade $c_n^\ast$ ($c_n$) and assume that the concentration at each cascade level is fixed $c_n^{tot}=c_n^\ast+c_n$.
+\begin{figure}[H]
+	\textbf{\underline{\underline{\smash{Box}}}}: Michaelis-Merten-Kinetics\vspace{0.2cm}\\
+	We consider the basis reaction scheme. Enzyme $E$ is converting a substrate $S$ into a complex $C$. This breaks down into a product $P$ and the enzyme $E$.
+	\begin{equation*}
+		S+E\overset{k_1}{\underset{k_{-1}}{\rightleftharpoons}} c\overset{k_2}{\to}P+E
+	\end{equation*}
+	Now using $S=[S]$ and similar, we get:
+	\begin{align*}
+		\frac{ds}{dt}&=k_{-1}c-k_1se\\
+		\frac{de}{dt}&=(k_{-1}+k_2)c-k_{1}se\\
+		\frac{dc}{dt}&=-(k_{-1}+k_2)c+k_1se\\
+		\frac{dp}{dt}&=k_2c
+	\end{align*}
+	The total concentration of the enzyme is constant; i.e. $e+c=e_0=const.$\\
+	We can eliminate $e$ using the conservatin of the enzyme:
+	\begin{equation*}
+		\frac{dc}{dt}=-(k_{-1}+k_2)c+k_1s(e_0-c)=-(k_{-1}+k_1s+k_2)c+k_1se_0
+	\end{equation*}
+	We now assume that the enzyme concentration is low, and therefore, that $s\approx const.$\\
+	We then get in the stationary state 
+	\begin{equation*}
+		c=\frac{k_1se_0}{(k_{-1}+k_1s+k_2)}
+	\end{equation*}
+	The production rate ist than simply given by
+	\begin{align*}
+		\frac{dp}{dt}&=k_2e_0\frac{k_1s}{(k_{-1}+k_2+k_1s)}=k_2e_0\frac{s}{s+k_M}\\
+		\text{where } k_M&=\frac{k_{-1}+k_2}{k_1} \qquad (\text{Michaelis constant})
+	\end{align*}
+\end{figure}
