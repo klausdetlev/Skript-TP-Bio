@@ -1,0 +1,116 @@
+The general solution of the linear system is given by
+\begin{equation*}
+	\vec{U}(\vec{x},t)=\sum\limits_{\vec{k}}\vec{c}_{\vec{k}}e^{i\vec{k}\vec{x}}e^{\lambda(\vec{k})t}
+\end{equation*}
+where $\vec{c}_{\vec{k}}e^{i\vec{k}\vec{x}}$ and $\lambda(\vec{k})$ from an eigenvalue pair.\\
+Substituting the general solution into the linearized equation, we get
+\begin{equation*}
+	\left|A-Dk^2-\lambda(\vec{k})\mathds{1}\right|=0
+\end{equation*}
+with
+\begin{equation*}
+	A=\begin{pmatrix} f_u & f_v \\ g_u & g_v\end{pmatrix}_{u^*,v^*} \qquad D=\begin{pmatrix} D_u & 0 \\ 0 & D_v\end{pmatrix}
+\end{equation*}
+We obtain the following quadratic equation for $\lambda$:
+\begin{equation*}
+	\lambda^2+\left[\left(D_u+D_v\right)k^2-f_u-f_v\right]\lambda+D_uD_vk^4-k^2\left(D_vf_u+D_ug_v\right)+f_ug_v-f_vg_u=0
+\end{equation*}
+In absence of diffusion ($D_u=D_v=0$) this reduces to:
+\begin{equation*}
+	\lambda^2 -\left[f_u+g_v\right]\lambda + f_ug_v-f_vg_u=0
+\end{equation*}
+Stability in absence of diffusion is obtained for
+\begin{equation*}
+	f_u+g_v <0,\quad f_ug_v-f_vg_u>0
+\end{equation*}
+Instability in the \textbf{stationary} state means that there exists a $\vec{k}\neq \vec{0}$ for which $\lambda(\vec{k})=0$. (stationarity of $\vec{U}(\vec{x},t)=\vec{U}(\vec{x})$)\\
+For $\lambda=0$ we get:
+\begin{equation*}
+	D_uD_vk^4-k^2\left(D_vf_u+D_ug_v\right)+f_ug_v-f_vg_u=0
+\end{equation*}
+This equation will have a positive solution for $k^2$ if
+\begin{equation*}
+	D_vf_u+D_ug_v>0
+\end{equation*}
+Therefore, the conditions of a Turing instability are given by
+\begin{align*}
+	&f_u+g_v<0\qquad f_ug_v-f_vg_u>0 & &\text{(stability in absence of diffusion)}\\
+	\text{and } &D_vf_u+D_ug_v>0 & &\text{(instability in presence of diffusion)}
+\end{align*}
+Remarks: The conditions given above define the parameterspace where a Turing instability can occur.
+\begin{itemize}[label={$\cdot$}]
+	\item Note that the wave numbers are discrete in finite systems
+		\begin{equation*}
+			|k|=\frac{\pi}{L}\sqrt{n_x^2+n_y^2}\qquad n_x,n_y\in\mathbb{Z}
+		\end{equation*}
+\end{itemize}
+\textbf{\underline{\smash{Example}}}: We consider the nondimensionalized RD-system
+\begin{align*}
+	\frac{\partial u}{\partial t}&=D\nabla^2u+\kappa(u+av-uv^2-cuv)\\
+	\frac{\partial v}{\partial t}&=\nabla^2 v+ \kappa(-u+bv+uv^2+cuv)
+\end{align*}
+This equation has a unique homogeneous stationary state at $(u,v)=(0,0)$\\
+Linearizing the equation leads to the characteristic equation:
+\begin{align*}
+	\left|\begin{pmatrix} \kappa-Dk^2 & \kappa a \\ -\kappa & -\kappa-k^2\end{pmatrix}-\lambda(k)\mathds{1}\right|&=0\\
+	\leadsto (\kappa - Dk^2-\lambda)(b\kappa -k^2 -\lambda)+a\kappa^2&=0
+\end{align*}
+For $k=0$ (homogeneous solution)
+\begin{equation*}
+	\lambda^2 -(1+b)\kappa\lambda +(b+a)\kappa^2=0
+\end{equation*}
+with roots:
+\begin{equation*}
+	\lambda=\frac{\kappa}{2}\left[(1+b)\pm\sqrt{(1-b)^2-4(b+a)}\right]
+\end{equation*}
+The fixpoint is stable for $b<-1; \ b+a>0$\\
+Turing instability ($k\neq 0$ for $\lambda(k)=0$)
+\begin{align*}
+	Dk^4-\kappa k^2(Db+1) +\kappa^2(b+a)&=0\\
+	\leadsto \left(k^2-\frac{\kappa (Db+1)}{2D}\right)^2=\left(\frac{\kappa (Db+1)}{2D}\right)^2-\frac{\kappa^2 (b+a)}{D}
+\end{align*}
+At onset of the instability, the discriminant for $k^2$ vanishes
+\begin{equation*}
+	\left[\kappa (Db+1)\right]^2=4D\kappa^2(b+a) \leadsto a=\frac{(Db-1)^2}{4D}
+\end{equation*}
+The critical wavenumber is $k_c=\frac{\kappa(Db+1)}{2D}$\\
+Such a solution exists if $Db+1>0$
+\subsubsection{Stochastic pattern formation}
+\begin{enumerate}[label={$\arabic*)$}]
+	\item \textbf{Turing instability in the Brusselator model}\\
+		Reminder: Brusselator model is an idealized model of an idealized auto catalytic reaction, described by:
+		\begin{equation*}
+			\emptyset \overset{\alpha}{\to} x;\qquad x\overset{\beta}{\to} y;\qquad zx+y\overset{\gamma}{\to}3X;\qquad x\overset{\delta}{\to}\emptyset
+		\end{equation*}
+		\begin{align*}
+			\frac{du}{dt}&=\alpha-(\beta+1)u+u^2v & &(u=\left[x\right];\ \gamma=\delta=1)\\
+			\frac{dv}{dt}&=\beta u-u^2v & &(v=\left[y\right])
+		\end{align*}
+\end{enumerate}
+Here we consider a spatially extended version of the Brusselator model, given by the RD system
+\begin{align*}
+	\frac{du}{dt}&=D_u\nabla^2u+\alpha-(\beta +1)u+u^2v\\
+	\frac{dv}{dt}&=D_v\nabla^2v+\beta u-u^2v
+\end{align*}
+where $D_u,D_v$ are the diffusion coefficients of the species $x$ and $y$.\\
+As usual we linearize the system about the homogeneous steady state solution, given by $u^*=\alpha,v^*=\frac{\beta}{\alpha}$, by using the ansatz:
+\begin{equation*}
+	u(\vec{x},t)=u^*+\xi(\vec{x})e^{\lambda t};\qquad v(\vec{x},t)=v^*+\eta(\vec{x})e^{\lambda t}
+\end{equation*}
+In first order of $\xi$ and $\eta$ we get:
+\begin{equation*}
+	\lambda\begin{pmatrix} \xi \\ \eta\end{pmatrix}=\begin{pmatrix} \beta -1+D_u\nabla^2 & \alpha^2 \\ -\beta & -\alpha^2 +D_v\nabla^2\end{pmatrix}\begin{pmatrix} \xi \\ \eta \end{pmatrix}
+\end{equation*}
+The system has eigensolutions of the form:
+\begin{equation*}
+	\xi(\vec{x})=\hat{\xi}(k)e^{-i\vec{k}\vec{x}},\qquad \eta(\vec{x})=\hat{\eta}(\vec{k})e^{-i\vec{k}\vec{x}}
+\end{equation*}
+Inserting this into the linearized equation, we effectively replace $\nabla^2\to -k^2$ and get the characetristic equation:
+\begin{align*}
+	\left(\beta-1 -D_uk^2 -\lambda\right)\left(\alpha^2+D_vk^2+\lambda\right) -\alpha^2\beta&=0\\
+	\leadsto \lambda_\pm(\vec{k})=\frac{1}{2}\left[\Gamma(\vec{k})\pm\sqrt{\Gamma(\vec{x})^2+4\Lambda(\vec{k})}\right]
+\end{align*}
+where
+\begin{equation*}
+	\Gamma(\vec{k})=\beta -1 -\alpha^2 -(D_u+D_v)\vec{k}^2,\quad \Lambda(\vec{k})=(\beta -1 -D_uk^2)(\alpha^2 + D_vk^2)-\alpha^2\beta
+\end{equation*}
