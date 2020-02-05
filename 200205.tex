@@ -1,0 +1,84 @@
+\noindent The case $k\neq 1$ is different, since a maximal current phase is not observed, because the bulk reservoir destroys a maximum current domain. In this case the solution is non-linear and has to be computed numerically. The phase diagram has the following form:
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}[>=stealth]
+		\draw[<->] (4,0)node[below right]{$\alpha$}--(0,0)--(0,4)node[above left]{$\beta$};
+		\draw (-0.1,2)node[left]{$\num{0.5}$}--++(0.2,0);
+		\draw (0,1.3) parabola (1,4);
+		\draw (1,0) parabola (3,4);
+		\node at (0.5,3){L};
+		\node at (1.5,2){S};
+		\node at (3,1){H};
+	\end{tikzpicture}
+\end{figure}
+\noindent \textbf{\underline{\smash{Phase boundaries}}}: $\left(\alpha <\frac{1}{2}\&\beta <\frac{1}{2}\right)$\vspace{2mm}\\
+Low-density Phase: The left solution propagates through the system, i.e. $\rho_l(1)<\beta$
+\begin{equation*}
+	\leadsto \Omega_D\left(1+D\right)=\left[2\left(\beta-\alpha\right)+\frac{k-1}{1+k}\ln\left|\frac{k-\left(1+k\right)\beta}{k-\left(1+k\right)\alpha}\right|\right]
+\end{equation*}
+High-density phase: The right solution propagates through the system or $\rho_r(0)\geq 1-\alpha$
+\begin{equation*}
+	\Omega_D\left(1+k\right)=2\left(\alpha+1\right)+\frac{k-1}{1+k}\ln\left|\frac{k-\left(1+k\right)\left(1-\beta\right)}{k-\left(1+k\right)\left(1-\alpha\right)}\right|
+\end{equation*}
+In case of $\alpha>\frac{1}{2}$ or $\beta >\frac{1}{2}$ the second order terms are of importance. There is no shock between the solution at the right boundary and the bulk solution. We can therefore effectively consider $\alpha$ or $\beta =\frac{1}{2}$ in order to obtain the shock position if existent.\\
+While higher order terms are important in order to construct the density and flow profile, the fluctuations of the shock can be obtained by a modified version of the domain wall theory. Now the "{}hopping rates"{} are given by:
+\begin{equation*}
+	\omega_l(i)=\frac{J_-(i)}{\Delta(i)}, \omega_r(i)=\frac{J_+(i)}{\Delta(i)}
+\end{equation*}
+where $\omega_l$ $(\omega_r)$ denote the hopping rates to the left (right) and $J_-(i)$ $\left[J_+(i)\right]$ the flux in the low (high) density domain at site $i$. $\Delta(i)$ is the height of the shock at position $i$.\\
+The mechanism of the localization of the shock is illustrated by the following picture
+\begin{figure}[H]
+	\begin{minipage}[l]{0.48\textwidth}
+		\centering
+		\begin{tikzpicture}[>=stealth]
+			\draw[->] (-0.5,0)--(4,0)node[below right]{$x$};
+			\draw[->] (0,-0.5)--(0,3)node[above left]{$J(x)$};
+			\draw (0,0.6) .. controls +(1.5,1.3) and +(-1.5,-0.2) .. ++(3.5,1.8)node[very near end,sloped,above]{$J_-(x)$};
+			\draw[densely dashed] (0,2.4) .. controls +(1.5,-0.2) and +(-1.5,1.3) .. (3.5,0.6)node[very near end,sloped,above]{$J_+(x)$};
+			%\draw (intersection of (0,2.4) .. controls +(1.5,-0.2) and +(-1.5,1.3) .. (3.5,0.6) and (0,0.6) .. controls +(1.5,1.3) and +(-1.5,-0.2) .. ++(3.5,1.8))circle(2pt)coordinate(c);
+		\end{tikzpicture}
+	\end{minipage}
+	\begin{minipage}[r]{0.48\textwidth}
+		The bias of the Random walk changes the orientation at the position of the shock
+		\begin{itemize}
+			\item[$\leadsto$] The shock is trapped
+		\end{itemize}
+	\end{minipage}
+\end{figure}
+\noindent From a continuum approximation one obtains that the relative width of the shock scales as $N^{-\nu}$ with $\nu=\frac{1}{2}$.
+\subsubsection{Brownian ratchet model of a processive motor}
+\begin{itemize}[label={$\to$}]
+	\item motors have different internal states (ATP-cycle)
+	\item states in a cycle $i=1,2,\ldots ,M$
+	\item motors move in a periodic potential $V_i(x)$, where the index refers to the internal state
+\end{itemize}
+Symmetric Potential: $V_i(-x)=V_i(x+\Delta x)$ for all $x$, $\Delta x$ arbitrary but fixed (if such a $\Delta x$ does not exists: asymmetric Potential)
+We can write a Focker-Planck-equation:
+\begin{equation*}
+	\frac{\partial p_i(x,t)}{\partial t}=-\frac{\partial J_i(x,t)}{\partial x}
+\end{equation*}
+$p_i(x,t)=$ probability density for a motor to be in a state $i$ at position $x$.\\
+$J_i(x,t)$ is the corresponding flux of probability
+\begin{equation*}
+	J_i(x,t)=\frac{1}{\gamma}\left[-V_i'(x)-k_BT\frac{\partial}{\partial x}\right]p_i(x,t)
+\end{equation*}
+where $\gamma=\frac{k_BT}{D}$ (Einstein relation).\\
+Now: Add transitions between states
+\begin{equation*}
+	\frac{\partial p_i(x,t)}{\partial t}=-\frac{\partial J_i(x,t)}{\partial x} + \sum\limits_{j=1}^M\left[\omega_{ij}(x)p_j(x,t)-\omega_{ji}(x)p_i(x,t)\right]
+\end{equation*}
+where $\omega_{ij}$ denotes the rates at which the motors switch from $j$ to $i$.\\
+\textbf{\underline{\smash{Two-state model}}}
+\begin{align*}
+	\frac{\partial p_1}{\partial t}+\frac{\partial J_1(x,t)}{\partial x}&=-\omega_1(x)p_1(x,t)+\omega_2(x)p_2(x,t)\\
+	\frac{\partial p_2}{\partial t}+\frac{\partial J_2(x,t)}{\partial x}&=\omega_1(x)p_1(x,t)-\omega_2(x)p_2(x,t)
+\end{align*}
+We consider $l$-periodic potentials $V_1(x),V_2(x)$ where $V_i(x)=V_i(x+l)$ where $V_i(x)=V_i(x+l)$ and introduce the reduced probabilites and fluxes:
+\begin{align*}
+	\hat{P}_j(x,t)&=\sum\limits_{n=-\infty}^\infty p_j(x+nl,t) & &, & \hat{J}_j(x,t)&=\sum\limits_{n=-\infty}^\infty J_j(x+nl,t)
+\end{align*}
+The total flux of probability can then be written as:
+\begin{equation*}
+	\hat{J}(x,t)=-\frac{1}{\gamma}\left[V_1'(x)\hat{p}_1(x,t)+V_2'(x)\hat{p}_2(x,t)+k_BT\frac{\partial\hat{p}(x,t)}{\partial x}\right]
+\end{equation*}
+with $\hat{p}=\hat{p}_1+\hat{p}_2$
