@@ -1,0 +1,18 @@
+\textbf{\underline{\smash{Two-state model of MT-dynamics}}}\vspace{0.2cm}\\
+\begin{align*}
+	\frac{\partial P_+(l,t)}{\partial t}&=-\left(\underset{\underset{\text{growth rate}}{\uparrow}}{\nu_+}+\underset{\underset{\text{catastrophe rate}}{\uparrow}}{k_+}\right)P_+(l,t)+\nu_+P(l-1,t)+\underset{\underset{\text{rescue rate}}{\uparrow}}{k_-}P_-(l,t)\\
+	&\underset{\underset{\text{continuum limit}}{\uparrow}}{\simeq} -\nu_+\frac{\partial P_+}{\partial x}+k_-P_-+k_+P_+
+\end{align*}
+\textbf{Similarly we get}:
+\begin{equation*}
+	\partial_tP_-=\nu_-\frac{\partial P_}{\partial x}-k_-P_-+k_+P_+
+\end{equation*}
+\textbf{Stationary state}:
+\begin{equation*}
+	\partial_t P_\pm =0 \leadsto \nu_+\frac{\partial P_+}{\partial x}-\nu_-\frac{\partial P_-}{\partial x}=0
+\end{equation*}
+\begin{align*}
+	\frac{dP(x)}{dx}&=\left[\frac{k_-}{\nu_-}-\frac{k_+}{\nu_+}\right]P(x)=\frac{V}{D}P(x) \qquad V=\frac{k_-\nu_+-k_+\nu_-}{k_+k_-},\ D=\frac{\nu_+\nu_-}{k_++k_-}\\
+	\leadsto P(x)&= P(0)e^{\frac{Vx}{D}}\quad 0<x<\infty
+	&\text{if } V<0
+\end{align*}

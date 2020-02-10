@@ -1,0 +1,54 @@
+Now we introduce $\lambda(x)=\frac{\hat{p}_1(x)}{\hat{p}(x)}$
+\begin{equation*}
+	\leadsto V_\text{eff}'(x)\hat{p}(x)+k_BT\frac{\partial\hat{p}(x)}{\partial x}=-\hat{J}_0\gamma \qquad \text{$\hat{p}(x)$ is the only variable}
+\end{equation*}
+where $V_\text{eff}=\int\limits_0^x\left[\lambda(y)V_1'(y)+(1-\lambda(y))V_2'(y)\right]dy$
+\begin{enumerate}[label={\arabic*)}]
+	\item Thermal equilibrium $\to$ detailed balance is satisfied
+		\begin{align*}
+			\frac{\omega_1(x)}{\omega_2(x)}&=e^{\frac{V_1(x)-V_2(x)}{k_BT}}=\frac{\hat{p}_2(x)}{\hat{p}_1(x)}\\
+			\Rightarrow \lambda(x)&=\frac{\hat{p}_1(x)}{\hat{p}_1(x)+\hat{p}_2(x)}=\frac{1}{1+\frac{\hat{p}_2(x)}{\hat{p}_1(x)}}\\
+			&=\frac{1}{1+\exp\left(\frac{V_1(x)-V_2(x)}{k_BT}\right)} \qquad \left(l\text{ periodic}\right)
+		\end{align*}
+		$\Rightarrow V_\text{eff}(x)$ is an $l$-periodic function and, therefore, there is no net motion in a particular direction.
+	\item ATP-hydrolysis\\
+		\textbf{\underline{\smash{Scheme}}}:
+		\begin{align*}
+			\text{ATP}+M_1&\overset{\alpha_1}{\underset{\alpha_2}{\rightleftharpoons}} M_2+\text{ADP}+\text{P}\\
+			\text{ADP}+\text{P}+M_1&\overset{\gamma_1}{\underset{\gamma_2}{\rightleftharpoons}} M_2+\text{ATP}\\
+			M_1&\overset{\beta_1}{\underset{\beta_2}{\rightleftharpoons}}M_2
+		\end{align*}
+		ATP-hydrolysis: Gain of chemical energy $\Delta\mu$
+		\begin{align*}
+			\leadsto \frac{\alpha_1}{\alpha_2}&=e^{\frac{V_1-V_2+\Delta\mu}{k_BT}}\\
+			\frac{\gamma_1}{\gamma_2}&=e^{\frac{V_1-V_2-\Delta\mu}{k_BT}}\\
+			\frac{\beta_1}{\beta_2}&=e^{\frac{V_1-V_2}{k_BT}}
+		\end{align*}
+		With this we get for the transition rates
+		\begin{align*}
+			\omega_1&=\alpha_1+\beta_1+\gamma_1=\alpha_2e^\frac{V_1-V_2+\Delta\mu}{k_BT}+\gamma_2e^\frac{V_1-V_2-\Delta\mu}{k_BT}+\beta_2e^\frac{V_1-V_2}{k_BT}\\
+			\omega_2&=\alpha_2+\beta_2+\gamma_2 \to \text{detailed balance is broken!}
+		\end{align*}
+		Detailed balance is broken. The solution of the FP-equation has to be determined numerically.\\
+		What is needed in order to generate driven motion $\to$ \underline{asymmetric potential}
+		\begin{figure}[H]
+			\centering
+			\begin{minipage}[l]{0.48\textwidth}
+				\begin{tikzpicture}[>=stealth]
+					\draw[->] (-1.5,0)--(5,0)node[below right]{$x$};
+					\draw[->] (0,-1)--(0,3)node[above left]{$V(x)$};
+					\foreach \x [count=\e] in {-1,0.5,...,4.53}{
+						\draw (\x,1.5)--(\x+1,0)node[midway,name=n\e]{}--(\x+1.5,1.5);
+					}
+					\draw[->] (-1,-1)node[below]{$V_1(x)$}--(n1);
+					\draw (-1,2)--(5,2)node[near end,above,sloped]{$V_2(x)$};
+				\end{tikzpicture}
+			\end{minipage}
+			\begin{minipage}[r]{0.48\textwidth}
+				\textbf{\underline{\smash{State 1}}}: Asymmetric periodic potential\\
+				(polarized filaments)\\
+				\textbf{\underline{\smash{State 2}}}: Diffusion\\
+			\end{minipage}
+		\end{figure}
+		Mechanism: Forward drift since it is more likely to return to state at a forward directing slope
+\end{enumerate}
